@@ -16,6 +16,8 @@ I wrote 2 keyloggers, they both can do the stuffs above, they are different from
 
 - keylogger_admin.py - It requires administrator rights, it will insert a value into registry system. It is hard to detect, but you should be cautious about using it. Using it improperly can damage the target's system.
 
+Recommend: you should have some knowledge about python in order to use properly.
+
 Check my project Wiki for more details.
 
 Thank you,
