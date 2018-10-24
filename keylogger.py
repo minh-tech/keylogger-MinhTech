@@ -3,7 +3,6 @@ from getpass import getuser
 from datetime import datetime
 from email.mime.text import MIMEText
 from shutil import copy
-from getpass import getuser
 from winshell import shortcut
 from smtplib import SMTP
 from threading import Timer
