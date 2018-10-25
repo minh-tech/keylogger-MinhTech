@@ -1,4 +1,4 @@
-# keylogger-minhTNH -- Python 3.6.6, Windows 10
+# keylogger-minhTNH -- Python 3.7, Windows 10
 Check my project Wiki for more details.
 
 DISCLAIMER
