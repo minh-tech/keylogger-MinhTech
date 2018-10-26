@@ -17,10 +17,10 @@ I wrote 3 keyloggers, they both can do the stuffs above, they are different from
 
 - keylogger_admin.py - It requires administrator rights, it will insert a value into registry system. It is hard to detect, but you should be cautious about using it. Using it improperly can damage the target's system.
 
-- keylogger_bypass_uac.py - It requires administrator rights, but it pypasses the User Account Control (UAC) to get admin rights without user's consensus. It will insert a value into registry system. It is hard to detect, but you should be cautious about using it. Using it improperly can damage the target's system.
+- keylogger_bypass_uac.py - It requires administrator rights, but it bypasses the User Account Control (UAC) to get admin rights without user's consensus. It will then insert a value into registry system. It is very hard to detect, but you should be cautious about using it. Using it improperly can damage the target's system.
 
 Recommend: you should have some knowledge about python in order to use properly.
-Python 3.6.6, Windows 10
+Python 3.7, Windows 10
 
 Check my project Wiki for more details.
 
